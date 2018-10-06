@@ -1,4 +1,5 @@
 import os
+import requests
 
 from flask import Flask, request, render_template, send_from_directory
 
@@ -55,6 +56,11 @@ def upload():
         print("Save it to: ", destination)
         print("-------------------------------------------")
         upload.save(destination)
+        with open(destination, 'rb') as f:
+            r = requests.post('http://i.image2haiku.com/upload.php', files={destination: f}, data={'secret':"image2haiku"})
+            print(r.content)
+            return r.content
+    
 
     #return send_from_directory("images", filename, as_attachment=True)
     return render_template("./complete.html",image_name=filename) #will show the file icon and tell that it is completed
