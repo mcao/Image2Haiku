@@ -10,29 +10,33 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 @app.route('/')
 def index():
-    return render_template("./upload.html")
+    return render_template("upload.html")
     #this is the function for calling the render template
 
 
 @app.route('/upload',methods=["POST"])
 #method for uploading the file
 def upload():
-    folder_name = request.form['superhero']
-    '''
+    folder_name =   "images"
+    
     # this is to verify that folder to upload to exists.
     if os.path.isdir(os.path.join(APP_ROOT, 'files/{}'.format(folder_name))):
         print("folder exist")
-    '''
+    
 
     target = os.path.join(APP_ROOT, 'files/{}'.format(folder_name))
     print(target)
     #print the file name
-
-    if not os.path.isdir(target):
-        os.mkdir(target)
+    print("-------------------------------------------")
+    #if (not os.path.isdir(target)):
+    os.mkdir(target)
+    print("good target")
+    print("-------------------------------------------")
         #if the directory exists, good. if not, then make it
     print(request.files.getlist("files"))
+    print("-------------------------------------------")
     #print the list of files requested...i think
+
     
     for upload in request.files.getlist("file"):
         print(upload)
@@ -44,9 +48,12 @@ def upload():
             print("File is supported...moving on")
         else:
             render_template("Error.html", message="Files were not supported: "+ext)
-        destination = "/".join[target, filename]    #adds the target directory path to the string filename with the / seperator
+        print("-------------------------------------------")
+        destination = target + "/" + filename    #adds the target directory path to the string filename with the / seperator
+        print("-------------------------------------------")
         print("Accept incoming File: ", filename)
         print("Save it to: ", destination)
+        print("-------------------------------------------")
         upload.save(destination)
 
     #return send_from_directory("images", filename, as_attachment=True)
