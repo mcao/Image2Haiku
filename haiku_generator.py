@@ -169,12 +169,6 @@ def sec_line_generator(adj_dict, noun_dict, verb_dict):
             # sort by value
             sorted_by_value = sorted(
                 possible_seconds.items(), key=lambda kv: kv[1], reverse=True)
-            for key, value in sorted_by_value:
-                if (int(key[1])) > 7:
-                    continue
-                else:
-                    second_line = key
-                    return second_line[0]
 
         adj,  adj_syllables = random.choice(list(adj_dict.items()))
         noun, noun_syllables = random.choice(list(noun_dict.items()))
@@ -204,12 +198,6 @@ def third_line_generator(adj_dict, noun_dict, verb_dict):
             # sort by value
             sorted_by_value = sorted(
                 possible_thirds.items(), key=lambda kv: kv[1], reverse=True)
-            for key, value in sorted_by_value:
-                if (int(key[1])) > 5:
-                    continue
-                else:
-                    third_line = key
-                    return third_line[0]
 
         adj,  adj_syllables = random.choice(list(adj_dict.items()))
         noun, noun_syllables = random.choice(list(noun_dict.items()))
