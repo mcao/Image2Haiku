@@ -302,7 +302,3 @@ def main_shit(word_list, final_senti):
     third_line = third_line_list[k]
 
     return first_line, second_line, third_line
-
-
-text = main_shit(word_list, 0.7)
-print(text)
