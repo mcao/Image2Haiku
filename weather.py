@@ -10,16 +10,16 @@ APIKEY = "HackPSU2018"
 
 @app.route('/',methods=['GET'])
 def index():
-    print("ready")
+    #print("ready")
     locationURL = "http://dataservice.accuweather.com/locations/v1/search?q=State%20College&apikey=HackPSU2018"
     r = requests.get(url=locationURL)
     #print(r);
     data = r.json()
-    print("--------------------------------------")
+    #print("--------------------------------------")
 
 #key = request.json[locationURL,'Key']
 #    print(key)
-    print(data[0]["Key"])
+#print(data[0]["Key"])
     
     # for x in data:
     #   try:
@@ -27,7 +27,7 @@ def index():
     #   except:
     #       print("error")
 
-    print("done")
+#print("done")
     temp = "done"
     
     weatherURL = "http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/" + data[0]["Key"] + "?apikey=" + APIKEY
@@ -38,16 +38,12 @@ def index():
     
     data = r.json()
     
-    print(data[0]["IconPhrase"])
-    print(data[0]["Temperature"]["Unit"],data[0]["Temperature"]["Value"])
-    if data[0]["IsDaylight"]:
-        print("It is day")
-    else:
-        print("It is night")
+    #print(data[0]["IconPhrase"])
+    #print(data[0]["Temperature"]["Unit"],data[0]["Temperature"]["Value"])
 
+    temp = str(data[0]["Temperature"]["Value"]) + data[0]["Temperature"]["Unit"]
     res = {"IconPhrase":data[0]["IconPhrase"],
-            "Unit":data[0]["Temperature"]["Unit"],
-            "Value":data[0]["Temperature"]["Value"],
+            "Temp":temp,
         "IsDaylight":data[0]["IsDaylight"]}
     #thomas code
     #print(type(r))
