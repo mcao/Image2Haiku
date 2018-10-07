@@ -231,7 +231,7 @@ word_list = 'happy thrilled exuberant elated exhilirated Hillary Obama Picaso se
 
 
 def main_shit(word_list, final_senti):
-    word_list = dictionary(word_list)
+    word_list = dictionary.get_syn(word_list)
 
     noun, verb, adj = finding_nouns_and_shit(word_list)
 
