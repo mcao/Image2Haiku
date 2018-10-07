@@ -14,17 +14,13 @@ def find_adjectives(dicti):
 
     doc = types.Document(content=dicti, type=enums.Document.Type.PLAIN_TEXT)
     nouns_n_shit = client.analyze_syntax(doc).tokens
-    print(nouns_n_shit)
-    if nouns_n_shit.part_of_speech.tag == 'ADJ':
-        adj.append(nouns_n_shit.text.content)
-    """
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     adj = []
     for token, whatever in nouns_n_shit:
-        if (pos_tag[token.part_of_speech.tag] == 'ADJ'):
+        if (token.part_of_speech.tag == 'ADJ'):
             adj.append(token.text.content)
-    """
+
     return adj
 
 
@@ -33,17 +29,12 @@ def find_nouns(dicti):
 
     doc = types.Document(content=dicti, type=enums.Document.Type.PLAIN_TEXT)
     nouns_n_shit = client.analyze_syntax(doc).tokens
-    print(nouns_n_shit)
-    if nouns_n_shit.part_of_speech.tag == 'NOUN':
-        noun.append(nouns_n_shit.text.content)
-    '''
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     noun = []
     for token, whatever in nouns_n_shit:
-        if (pos_tag[token.part_of_speech.tag] == 'NOUN'):
+        if (token.part_of_speech.tag == 'NOUN'):
             noun.append(token.text.content)
-    '''
 
     return noun
 
@@ -54,16 +45,13 @@ def find_verbs(dicti):
     doc = types.Document(content=dicti, type=enums.Document.Type.PLAIN_TEXT)
     nouns_n_shit = client.analyze_syntax(doc).tokens
     print(nouns_n_shit)
-    if nouns_n_shit.part_of_speech.tag == 'VERB':
-        verb.append(nouns_n_shit.text.content)
-    """
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     verb = []
     for token, whatever in nouns_n_shit:
-        if (pos_tag[token.part_of_speech.tag] == 'VERB'):
+        if (token.part_of_speech.tag == 'VERB'):
             verb.append(token.text.content)
-    """
+
     return verb
 
 # https://stackoverflow.com/questions/46759492/syllable-count-in-python
