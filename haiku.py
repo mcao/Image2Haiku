@@ -14,6 +14,7 @@ def find_adjectives(dicti):
 
     doc = types.Document(content=dicti, type=enums.Document.Type.PLAIN_TEXT)
     nouns_n_shit = client.analyze_syntax(doc).tokens
+    print(nouns_n_shit)
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     adj = []
@@ -29,6 +30,7 @@ def find_nouns(dicti):
 
     doc = types.Document(content=dicti, type=enums.Document.Type.PLAIN_TEXT)
     nouns_n_shit = client.analyze_syntax(doc).tokens
+    print(nouns_n_shit)
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     noun = []
@@ -44,6 +46,7 @@ def find_verbs(dicti):
 
     doc = types.Document(content=dicti, type=enums.Document.Type.PLAIN_TEXT)
     nouns_n_shit = client.analyze_syntax(doc).tokens
+    print(nouns_n_shit)
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     verb = []
