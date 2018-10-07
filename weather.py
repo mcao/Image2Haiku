@@ -112,6 +112,6 @@ def get_city(latitude, longitude):
     print(data)
 
     if data is None or not hasattr(data, "LocalizedName"):
-        return "FUCK YOURSELF"
+        return "State College"
     else:
         return data["LocalizedName"]
