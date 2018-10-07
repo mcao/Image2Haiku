@@ -21,7 +21,8 @@ def upload():
         lat, lon = image_data.get_lat_lon(
             image_data.get_exif_data(file_data[0]))
     else:
-        lat, lon = None
+        lat = None
+        lon = None
     url = file_data[1]
 
     try:
