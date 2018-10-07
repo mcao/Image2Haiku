@@ -20,8 +20,11 @@ def upload():
     lat, lon = image_data.get_lat_lon(image_data.get_exif_data(file_data[0]))
     url = file_data[1]
 
-    concepts = clarifai_data.get_concepts(url)
-    colors = clarifai_data.get_colors(url)
+    try:
+        concepts = clarifai_data.get_concepts(url)
+        colors = clarifai_data.get_colors(url)
+    except:
+        return "Kill Yourself"
 
     emotions, objects = image_request.response(image_request.cloud_vision(url))
     emotion_data = image_request.black_magic(emotions)
