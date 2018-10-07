@@ -1,7 +1,7 @@
 import os
 import image_data
 import clarifai_data
-import haiku_generator
+import test_generator
 import weather
 import image_request
 from flask import Flask, request, render_template, send_from_directory
@@ -42,8 +42,8 @@ def upload():
         weather_raw = weather.get_weather("State College")
         weather_data = weather.black_magic(weather_raw, emotion_data[0])
     print(phrases, emotion_data, weather_data)
-    print(haiku_generator.main_shit(phrases, weather_data))
-    return haiku_generator.main_shit(phrases, weather_data)
+    print(test_generator.generate_haiku(phrases, weather_data))
+    return test_generator.generate_haiku(phrases, weather_data)
 
 
 @app.route('/files/<path:path>')
