@@ -17,13 +17,13 @@ def index():
 def upload():
     file_data = upload_file(request)
     ext = os.path.splitext(file_data[2])[1]
+    url = file_data[1]
     if ext is 'jpg':
         lat, lon = image_data.get_lat_lon(
             image_data.get_exif_data(file_data[0]))
     else:
         lat = None
         lon = None
-    url = file_data[1]
 
     try:
         concepts = clarifai_data.get_concepts(url)
@@ -74,7 +74,7 @@ def upload_file(req):
         print("File saved: ", destination)
         file.save(destination)
 
-    return (destination, "http://image2haiku.com/files/" + filename, filename)
+    return (destination, "https://image2haiku.com/files/" + filename, filename)
 
 
 if __name__ == "__main__":
