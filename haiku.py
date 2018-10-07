@@ -17,7 +17,7 @@ def find_adjectives(dicti):
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     adj = []
-    for token in nouns_n_shit:
+    for token, whatever in nouns_n_shit:
         if (pos_tag[token.part_of_speech.tag] == 'ADJ'):
             adj.append(token.text.content)
 
@@ -32,7 +32,7 @@ def find_nouns(dicti):
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     noun = []
-    for token in nouns_n_shit:
+    for token, whatever in nouns_n_shit:
         if (pos_tag[token.part_of_speech.tag] == 'NOUN'):
             noun.append(token.text.content)
 
@@ -47,7 +47,7 @@ def find_verbs(dicti):
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     verb = []
-    for token in nouns_n_shit:
+    for token, whatever in nouns_n_shit:
         if (pos_tag[token.part_of_speech.tag] == 'VERB'):
             verb.append(token.text.content)
 
@@ -269,9 +269,6 @@ def main_shit(word_list, final_senti):
     adj_dict = adj_lst_to_dict(adj_to_adj_lst(adj))
     noun_dict = noun_lst_to_dict(noun_to_noun_lst(noun))
     verb_dict = verb_lst_to_dict(verb_to_verb_lst(verb))
-
-    print(first_line_generator(
-        adj_dict, noun_dict, verb_dict))
 
     first_line_list = []
     second_line_list = []
