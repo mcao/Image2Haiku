@@ -27,12 +27,6 @@ def get_colors(imgurl='https://samples.clarifai.com/metro-north.jpg', threshold=
     colors = prediction["outputs"][0]["data"]["colors"]
     valid_colors = []
     for color in colors:
-        # if color["value"] >= PERCENT_THRESHOLD:
-        #     r = int(color["w3c"]["hex"][1:3], 16)/255
-        #     g = int(color["w3c"]["hex"][3:5], 16)/255
-        #     b = int(color["w3c"]["hex"][5:], 16)/255
-        #     hsv = colorsys.rgb_to_hsv(r,g,b)
-        #     print(hsv)
         if color["value"] >= threshold:
             color_name = color["w3c"]["name"].lower()
             color_names = ["white", "grey", "gray", "black", "red",
