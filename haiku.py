@@ -1,10 +1,10 @@
 import random
-'''import os
+import os
 from google import cloud
 from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
-import dictionary'''
+import dictionary
 
 #os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "./Natural-lang-1-ab3088af655f.json"
 
@@ -81,12 +81,17 @@ def syllable_count(some_list):
         syllable_list.append(count)
 
     return syllable_list
+
+
 adj = ['light', 'cold', 'evening']
 verb = ['running', 'sleeping', 'superrcalifragil']
-noun = ['winter', 'snow', 'no person', 'landscape', 'weather', 'ice', 'road', 'dawn', 'storm', 'moon', 'travel', 'outdoors', 'environment', 'dark', 'sunset', 'energy', 'dusk', 'people', 'calamity', 'nature', 'water', 'tree', 'sky']
+noun = ['winter', 'snow', 'no person', 'landscape', 'weather', 'ice', 'road', 'dawn', 'storm', 'moon', 'travel',
+        'outdoors', 'environment', 'dark', 'sunset', 'energy', 'dusk', 'people', 'calamity', 'nature', 'water', 'tree', 'sky']
+
 
 def test():
     return adj_lst_to_dict(adj_to_adj_lst(adj))
+
 
 def adj_to_adj_lst(adj):
     adj_lst = [adj, syllable_count(adj)]
@@ -102,24 +107,24 @@ def verb_to_verb_lst(verb):
     verb_lst = [verb, syllable_count(verb)]
     return verb_lst
 
+
 adj_lst = ['light', 'cold', 'evening']
+
 
 def adj_lst_to_dict(adj_lst):
     adj_dict = {}
     a = adj_lst[0]
     b = adj_lst[1]
-    for i in range(0,len(adj_lst)):
-        adj_dict.update({a[i] : b[i] })
+    for i in range(0, len(adj_lst)):
+        adj_dict.update({a[i]: b[i]})
 
     return adj_dict
 
 
-
-
 def noun_lst_to_dict(noun_lst):  # , noun_lst, verb_lst):
     noun_dict = {}
-    for i in range(0,len(noun_lst)):
-        noun_dict.update({noun_lst[0][i] : noun_lst[1][i]})
+    for i in range(0, len(noun_lst)):
+        noun_dict.update({noun_lst[0][i]: noun_lst[1][i]})
 
     return noun_dict
 
