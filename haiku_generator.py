@@ -9,7 +9,22 @@ import dictionary
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "./Natural-lang-1-ab3088af655f.json"
 
 
-def finding_nouns_and_shit(dicti):
+def find_adjectives(dicti):
+    client = language.LanguageServiceClient()
+
+    doc = types.Document(content=dicti, type=enums.Document.Type.PLAIN_TEXT)
+    nouns_n_shit = client.analyze_syntax(doc).tokens
+    pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
+               'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
+    adj = []
+    for token in nouns_n_shit:
+        if (pos_tag[token.part_of_speech.tag] == 'ADJ'):
+            adj.append(token.text.content)
+
+    return adj
+
+
+def find_nouns(dicti):
     client = language.LanguageServiceClient()
 
     doc = types.Document(content=dicti, type=enums.Document.Type.PLAIN_TEXT)
@@ -17,17 +32,26 @@ def finding_nouns_and_shit(dicti):
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     noun = []
-    verb = []
-    adj = []
     for token in nouns_n_shit:
         if (pos_tag[token.part_of_speech.tag] == 'NOUN'):
             noun.append(token.text.content)
+
+    return noun
+
+
+def find_verbs(dicti):
+    client = language.LanguageServiceClient()
+
+    doc = types.Document(content=dicti, type=enums.Document.Type.PLAIN_TEXT)
+    nouns_n_shit = client.analyze_syntax(doc).tokens
+    pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
+               'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
+    verb = []
+    for token in nouns_n_shit:
         if (pos_tag[token.part_of_speech.tag] == 'VERB'):
             verb.append(token.text.content)
-        if (pos_tag[token.part_of_speech.tag] == 'ADJ'):
-            adj.append(token.text.content)
 
-    return noun, verb, adj
+    return verb
 
 # https://stackoverflow.com/questions/46759492/syllable-count-in-python
 
@@ -223,7 +247,9 @@ def main_shit(word_list, final_senti):
 
     dicti = dictionary.get_syn(word_list)
 
-    noun, verb, adj = finding_nouns_and_shit(dicti)
+    noun = find_nouns(dicti)
+    verb = find_verbs(dicti)
+    adj = find_adjectives(dicti)
 
     adj_dict = adj_lst_to_dict(adj_to_adj_lst(adj))
     noun_dict = noun_lst_to_dict(noun_to_noun_lst(noun))
