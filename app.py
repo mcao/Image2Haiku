@@ -48,7 +48,8 @@ def upload():
     # print(super_generator.main_shit(phrases, weather_data))
     first_line, second_line, third_line = super_generator.main_shit(
         phrases, weather_data)
-    return first_line + "<br>" + second_line + "<br>" + third_line
+    return render_template('result.html', first_line=first_line,
+                           second_line=second_line, third_line=third_line)
 
 
 @app.route('/files/<path:path>')
