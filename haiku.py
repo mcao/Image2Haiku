@@ -6,7 +6,7 @@ from google.cloud.language import enums
 from google.cloud.language import types
 import dictionary
 
-#os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "./Natural-lang-1-ab3088af655f.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "./Natural-lang-1-ab3088af655f.json"
 
 
 def find_adjectives(dicti):
