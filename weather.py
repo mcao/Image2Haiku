@@ -1,5 +1,6 @@
 import requests
 import random
+import json
 
 API_KEY = "HackPSU2018"
 BASE_URL = "http://dataservice.accuweather.com/"
@@ -108,7 +109,7 @@ def get_city(latitude, longitude):
 
     req = requests.get(url=loc_url)
 
-    data = req.json()
+    data = json.loads(req.content.decode('utf-8'))
 
     if data is None or not hasattr(data, "LocalizedName"):
         return "FUCK YOURSELF"
