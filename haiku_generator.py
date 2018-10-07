@@ -1,7 +1,6 @@
 import random
 import os
-from google.cloud import language_v1
-from google.cloud.language_v1 import enums
+from google import cloud
 from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
@@ -77,7 +76,7 @@ def verb_to_verb_lst(verb):
 
 def adj_lst_to_dict(adj_lst):
     adj_dict = {}
-    for i in range(len(adj_lst)+1):
+    for i in range(len(adj_lst)):
         adj_dict[adj_lst[0][i]] = adj_lst[1][i]
 
     return adj_dict
@@ -85,7 +84,7 @@ def adj_lst_to_dict(adj_lst):
 
 def noun_lst_to_dict(noun_lst):  # , noun_lst, verb_lst):
     noun_dict = {}
-    for i in range(len(noun_lst)+1):
+    for i in range(len(noun_lst)):
         noun_dict[noun_lst[0][i]] = noun_lst[1][i]
 
     return noun_dict
@@ -93,7 +92,7 @@ def noun_lst_to_dict(noun_lst):  # , noun_lst, verb_lst):
 
 def verb_lst_to_dict(verb_lst):  # , noun_lst, verb_lst):
     verb_dict = {}
-    for i in range(len(verb_lst)+1):
+    for i in range(len(verb_lst)):
         verb_dict[verb_lst[0][i]] = verb_lst[1][i]
 
     return verb_dict
@@ -206,7 +205,7 @@ def third_line_generator(adj_dict, noun_dict, verb_dict):
 
 def calculate_sentiment_of_phrase(phrase_list):
 
-    client = language_v1.LanguageServiceClient()
+    client = language.LanguageServiceClient()
     phrase_sentiment_list = []
 
     for i in range(len(phrase_list)):
