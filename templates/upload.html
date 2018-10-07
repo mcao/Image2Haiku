@@ -2,37 +2,54 @@
 <html>
 
 <head>
-
-    <title>Upload</title>
+    <title>Haiku Generator - Upload file</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <style>
+        div {
+                font-family: 'Nunito', sans-serif;
+            }
+
+            .outer {
+                display: table;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+            }
+
+            .middle {
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            .inner {
+                margin: auto;
+                width: 50%;
+                max-width: 500px;
+                text-align: center;
+                background-color: white;
+                border: 1px solid black;
+                padding: 10px;
+            }
+        </style>
 </head>
 
-<body>
+<body bgcolor=lightgrey>
+    <div class="outer">
+        <div class="middle">
+            <div bgcolor=white class="inner">
+                <h1>Haiku Generator</h1>
 
-    <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-
-        <strong>Files:</strong><br><br>
-        <input id="file-picker" type="file" name="file" accept="image/*" multiple><br><br>
-        <div id="msg"></div>
-        <input type="submit" value="Upload!" id="upload-button">
-    </form>
+                <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                    <h3>Upload files:</h3>
+                    <input id="file-picker" type="file" name="file" accept=".jpg,.png" multiple>
+                    <div id="msg"></div>
+                    <input type="submit" value="Upload!" id="upload-button">
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
 </body>
-<script>
-
-    $("#file-picker").change(function () {
-        var input = document.getElementById('file-picker');
-        for (var i = 0; i < input.files.length; i++) {
-            var ext = input.files[i].name.substring(input.files[i].name.lastIndexOf('.') + 1).toLowerCase()
-            if ((ext == 'jpg') || (ext == 'png')) {
-                $("#msg").text("Files are supported")
-            }
-            else {
-                $("#msg").text("Files are NOT supported")
-                document.getElementById("file-picker").value = "";
-            }
-        }
-    });
-
-</script>
 
 </html>
