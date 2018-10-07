@@ -8,6 +8,7 @@ BASE_URL = "http://dataservice.accuweather.com/"
 def get_weather(location):
     location_url = BASE_URL + "locations/v1/search?q=" + \
         location.replace(' ', '%20') + "&apikey=" + API_KEY
+    print("Querying Accuweather at " + location_url)
     req = requests.get(url=location_url)
     data = req.json()
 
