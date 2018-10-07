@@ -119,7 +119,7 @@ def first_line_generator(adj_dict, noun_dict, verb_dict):
             sorted_by_value = sorted(
                 possible_firsts.items(), key=lambda kv: kv[1], reverse=True)
             for key in sorted_by_value:
-                if (key[1]) > 7:
+                if (key[1]) > 10:
                     continue
                 else:
                     first_line = key
@@ -135,7 +135,7 @@ def first_line_generator(adj_dict, noun_dict, verb_dict):
         possible_firsts[first_line] = syllable
 
         # break if 5 syllables
-        if syllable == 7:
+        if syllable == 10:
             return first_line
 
         tries += 1
@@ -154,7 +154,7 @@ def sec_line_generator(adj_dict, noun_dict, verb_dict):
             sorted_by_value = sorted(
                 possible_seconds.items(), key=lambda kv: kv[1], reverse=True)
             for key in sorted_by_value:
-                if (key[1]) > 9:
+                if (key[1]) > 12:
                     continue
                 else:
                     second_line = key
@@ -170,7 +170,7 @@ def sec_line_generator(adj_dict, noun_dict, verb_dict):
         possible_seconds[second_line] = syllable
 
         # break if 5 syllables
-        if syllable == 9:
+        if syllable == 12:
             return second_line
 
         tries += 1
@@ -189,7 +189,7 @@ def third_line_generator(adj_dict, noun_dict, verb_dict):
             sorted_by_value = sorted(
                 possible_thirds.items(), key=lambda kv: kv[1], reverse=True)
             for key in sorted_by_value:
-                if (key[1]) > 7:
+                if (key[1]) > 10:
                     continue
                 else:
                     third_line = key
@@ -205,7 +205,7 @@ def third_line_generator(adj_dict, noun_dict, verb_dict):
         possible_thirds[third_line] = syllable
 
         # break if 5 syllables
-        if syllable == 7:
+        if syllable == 10:
             return third_line
 
         tries += 1
