@@ -33,6 +33,7 @@ def response(resp):
 
     # names
     names = []
+    print(vision_response["responses"][0])
     print(vision_response["responses"][0]
           ["localizedObjectAnnotations"][0]["name"])
     for values in range(len(vision_response["responses"][0]["localizedObjectAnnotations"])):

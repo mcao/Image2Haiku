@@ -43,7 +43,7 @@ def black_magic(res, emo):
     temp_mood = 0
     # do the linear regression for the temperature
     if Unit == "F":
-        if (temp == 68):
+        if temp == 68:
             temp_mood = 1
         elif temp < 32 or temp > 100:
             temp_mood = -1
@@ -55,7 +55,7 @@ def black_magic(res, emo):
             print("error")
 
     else:
-        if (temp == 20):
+        if temp == 20:
             temp_mood = 1
         elif temp < 32 or temp > 100:
             temp_mood = -1
@@ -74,7 +74,7 @@ def black_magic(res, emo):
         day_light_mood = -1
 
     # TODO: emo weight
-    list = {0.5, 0.4, 0.3, 0.2, 0.1, 0, -0.1, -0.2, -.3, -.4, -.5}
+    weights = {0.5, 0.4, 0.3, 0.2, 0.1, 0, -0.1, -0.2, -.3, -.4, -.5}
     weather_mood = 0
     # weather weighting
     if (weather >= 1 and weather <= 6):
@@ -88,14 +88,14 @@ def black_magic(res, emo):
     else:
         weather_mood = random.uniform(-0.8, 0.2)
 
-    sum = 0
+    total = 0
     if emo == 1:
-        sum = 0.33*(temp_mood + day_light_mood + weather_mood)
+        total = 0.33*(temp_mood + day_light_mood + weather_mood)
     else:
-        sum = 0.25*(temp_mood + day_light_mood + weather_mood)
+        total = 0.25*(temp_mood + day_light_mood + weather_mood)
 
     # return two options. one with emotion and one without
-    return sum
+    return total
 
 
 def get_city(latitude, longitude):

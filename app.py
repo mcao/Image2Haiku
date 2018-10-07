@@ -40,9 +40,8 @@ def upload():
         weather_raw = weather.get_weather(weather.get_city(lat, lon))
         weather_data = weather.black_magic(weather_raw, emotion_data[0])
     else:
-        weather_data = weather.black_magic({"WeatherIcon": -1,
-                                            "Temp": "20.0C",
-                                            "IsDaylight": True}, emotion_data[0])
+        weather_raw = weather.get_weather("State College")
+        weather_data = weather.black_magic(weather_raw, emotion_data[0])
     print(phrases, colors, emotion_data, weather_data)
     return haiku_generator.generate_haiku(phrases, colors, emotion_data, weather_data)
 
