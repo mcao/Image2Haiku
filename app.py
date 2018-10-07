@@ -3,6 +3,8 @@ import image_data
 import clarifai_data
 import haiku_generator
 import weather
+import dictionary
+import image_request
 from flask import Flask, request, render_template, send_from_directory
 app = Flask('__name__')
 
@@ -22,22 +24,32 @@ def upload():
     concepts = clarifai_data.get_concepts(url)
     colors = clarifai_data.get_colors(url)
 
-    city = weather.get_city(lat, lon)
-    weather_data = weather.get_weather(city)
+    emotions, objects = image_request.response(image_request.cloud_vision(url))
+    emotion_data = image_request.black_magic(emotions)
 
-    return haiku_generator.generate_haiku(concepts, colors, weather_data)
+    concept_phrases = [dictionary.get_phrase(word) for word in concepts]
+    object_phrases = [dictionary.get_phrase(word) for word in objects]
+    phrases = removeDuplicates(concept_phrases, object_phrases)
+
+    city = weather.get_city(lat, lon)
+    weather_raw = weather.get_weather(city)
+    weather_data = weather.black_magic(weather_raw)
+
+    return haiku_generator.generate_haiku((phrases, colors, emotion_data, weather_data))
 
 
 @app.route('/files/<path:path>')
 def send_file(path):
     return send_from_directory('files', path)
 
-def removeDuplicates(clarifaiList, visionList):
-    outlist = clarifaiList[:]
-    for item in visionList:
-        if item not in clarifaiList:
+
+def removeDuplicates(list1, list2):
+    outlist = list1[:]
+    for item in list2:
+        if item not in list1:
             outlist.append(item)
     return outlist
+
 
 def upload_file(req):
     target = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'files')
