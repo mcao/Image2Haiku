@@ -50,6 +50,7 @@ def upload():
         phrases, weather_data)
     return render_template('result.html', first_line=first_line,
                            second_line=second_line, third_line=third_line)
+    return first_line + "<br>" + second_line + "<br>" + third_line
 
 
 @app.route('/files/<path:path>')
