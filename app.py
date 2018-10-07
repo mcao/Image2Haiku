@@ -27,15 +27,13 @@ def upload():
     emotions, objects = image_request.response(image_request.cloud_vision(url))
     emotion_data = image_request.black_magic(emotions)
 
-    concept_phrases = [dictionary.get_phrase(word) for word in concepts]
-    object_phrases = [dictionary.get_phrase(word) for word in objects]
-    phrases = removeDuplicates(concept_phrases, object_phrases)
+    phrases = concepts + objects
 
     city = weather.get_city(lat, lon)
     weather_raw = weather.get_weather(city)
-    weather_data = weather.black_magic(weather_raw)
-
-    return haiku_generator.generate_haiku((phrases, colors, emotion_data, weather_data))
+    # weather_data = weather.black_magic(weather_raw, emotion_data[0])
+    print(phrases, colors, emotion_data, weather_raw)
+    return haiku_generator.generate_haiku((phrases, colors, emotion_data, weather_raw))
 
 
 @app.route('/files/<path:path>')

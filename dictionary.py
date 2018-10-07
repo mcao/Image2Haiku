@@ -16,8 +16,13 @@ def get_phrase(word):
     req = requests.get(url=dict_url, headers={
                        'app_id': APP_ID, 'app_key': DICT_KEY})
     # print(req.content)
-    data = req.json()
+    try:
+        data = req.json()
+    except:
+        data = {}
 
     # print(data["results"][0]["lexicalEntries"][0]["sentences"][0]["text"])
 
-    return data["results"][0]["lexicalEntries"][0]["sentences"][0]["text"]
+    if hasattr(data, "results"):
+        return data["results"][0]["lexicalEntries"][0]["sentences"][0]["text"]
+    return ""
