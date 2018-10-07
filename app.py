@@ -45,7 +45,7 @@ def upload():
     print(phrases, emotion_data, weather_data)
     # print(test_generator.generate_haiku(phrases, emotion_data, weather_data))
     # return test_generator.generate_haiku(phrases, emotion_data, weather_data)
-    print(super_generator.main_shit(phrases, weather_data))
+    # print(super_generator.main_shit(phrases, weather_data))
     return super_generator.main_shit(phrases, weather_data)
 
 
