@@ -40,11 +40,10 @@ def response(resp):
             names.append(vision_response["responses"][0]
                          ["localizedObjectAnnotations"][0]["name"])
     elif hasattr(vision_response["responses"][0], "webEntities"):
-        print(vision_response["responses"][0]
-              ["localizedObjectAnnotations"][0]["name"])
-        for values in range(len(vision_response["responses"][0]["localizedObjectAnnotations"])):
-            names.append(vision_response["responses"][0]
-                         ["localizedObjectAnnotations"][0]["name"])
+        print(vision_response["responses"][0]["webEntities"][0]["description"])
+        for values in range(len(vision_response["responses"][0]["webEntities"])):
+            names.append(vision_response["responses"]
+                         [0]["webEntities"][0]["description"])
 
     # concanate objects
     objects = names + labels
