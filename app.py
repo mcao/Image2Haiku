@@ -3,7 +3,6 @@ import image_data
 import clarifai_data
 import haiku_generator
 import weather
-import dictionary
 import image_request
 from flask import Flask, request, render_template, send_from_directory
 app = Flask('__name__')
@@ -27,13 +26,16 @@ def upload():
     emotions, objects = image_request.response(image_request.cloud_vision(url))
     emotion_data = image_request.black_magic(emotions)
 
-    phrases = concepts + objects
+    phrases = removeDuplicates(concepts, objects)
 
-    city = weather.get_city(lat, lon)
-    weather_raw = weather.get_weather(city)
-    # weather_data = weather.black_magic(weather_raw, emotion_data[0])
-    print(phrases, colors, emotion_data, weather_raw)
-    return haiku_generator.generate_haiku((phrases, colors, emotion_data, weather_raw))
+    if lat is not None and lon is not None:
+        city = weather.get_city(lat, lon)
+        weather_raw = weather.get_weather(city)
+        weather_data = weather.black_magic(weather_raw, emotion_data[0])
+    else:
+        weather_data = 0
+    print(phrases, colors, emotion_data, weather_data)
+    return haiku_generator.generate_haiku(phrases, colors, emotion_data, weather_data)
 
 
 @app.route('/files/<path:path>')
