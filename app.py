@@ -44,9 +44,10 @@ def send_file(path):
 
 
 def removeDuplicates(list1, list2):
-    outlist = list1[:]
-    for item in list2:
-        if item not in list1:
+    outlist = []
+    inlist = list1 + list2
+    for item in inlist:
+        if item not in outlist:
             outlist.append(item)
     return outlist
 
