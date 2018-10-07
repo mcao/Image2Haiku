@@ -28,18 +28,19 @@
                 <div class="offset-md-4 col-md-4 haiku offset-md-4">
                     <div bgcolor=white class="inner">
                         <h1>Haiku</h1>
-                        {% if first_line %}
+                        {%if first_line%}
                             <p>{{first_line}}</p>
-                        {% else %}
+                        {%else%}
                             <p>HOW MUCH CAN I FIT</p>
-                        {% if second_line %}
+                        {%if second_line%}
                             <p>{{second_line}}</p>
-                        {% else %}
+                        {%else%}
                             <p>INTO A HAIKU FORMAT
-                        {% if third_line %}
+                        {%if third_line%}
                             <p>{{third_line}}</p>
-                        {% else %}
+                        {%else%}
                             <p>OH NO IM OUT OF</p>
+                        {%endif%}
                         <br>
                     </div>
                 </div>
