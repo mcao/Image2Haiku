@@ -25,7 +25,7 @@ def finding_nouns_and_shit(dicti):
    
     return nouns_list,verbs_list,adj_list
 
-text_string = 'Docker containers are the future of scalable applications and a must learn skill for any developer. At this workshop you will learn basics of Docker and Software Containers and why they’re important. We will cover setting up Docker, running your first container, creating a basic web application with Python and Docker, and how to publish an application on Docker Hub.'
+text_string = 'Docker Important with dock get that KLM we are the best of the best Hub.'
 list1 = finding_nouns_and_shit(text_string)
         
 print(list1)
