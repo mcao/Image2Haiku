@@ -1,5 +1,8 @@
 import os
 import image_data
+import clarifai_data
+import haiku_generator
+import weather
 from flask import Flask, request, render_template, send_from_directory
 app = Flask('__name__')
 
@@ -11,7 +14,18 @@ def index():
 
 @app.route('/upload', methods=["POST"])
 def upload():
-    return upload_file(request)
+    file_data = upload_file(request)
+
+    lat, lon = image_data.get_lat_lon(image_data.get_exif_data(file_data[0]))
+    url = file_data[1]
+
+    concepts = clarifai_data.get_concepts(url)
+    colors = clarifai_data.get_colors(url)
+
+    city = weather.get_city(lat, lon)
+    weather_data = weather.get_weather(city)
+
+    return haiku_generator.generate_haiku(concepts, colors, weather_data)
 
 
 @app.route('/files/<path:path>')
@@ -31,9 +45,7 @@ def upload_file(req):
         print("File saved: ", destination)
         file.save(destination)
 
-    print(image_data.get_lat_lon(image_data.get_exif_data(destination)))
-
-    return "http://image2haiku.com/files/" + filename
+    return (destination, "http://image2haiku.com/files/" + filename)
 
 
 if __name__ == "__main__":
