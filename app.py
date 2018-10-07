@@ -56,7 +56,7 @@ def upload():
 
     # return send_from_directory("images", filename, as_attachment=True)
     # will show the file icon and tell that it is completed
-    return "http://127.0.0.1:5000/files/" + filename
+    return "http://image2haiku.com/files/" + filename
 
 
 @app.route('/files/<path:path>')
@@ -65,4 +65,4 @@ def send_file(path):
 
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    app.run(port=80, debug=True)
