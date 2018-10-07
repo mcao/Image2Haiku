@@ -31,7 +31,7 @@ def get_colors(imgurl='https://samples.clarifai.com/metro-north.jpg', threshold=
             color_name = color["w3c"]["name"].lower()
             color_names = ["white", "grey", "gray", "black", "red",
                            "orange", "yellow", "green", "blue", "purple", "violet"]
-            for c in color_name:
-                if c in color_names and c not in valid_colors:
+            for c in color_names:
+                if c in color_name and c not in valid_colors:
                     valid_colors.append(c)
     return valid_colors
