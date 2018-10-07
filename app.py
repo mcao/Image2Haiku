@@ -32,6 +32,12 @@ def upload():
 def send_file(path):
     return send_from_directory('files', path)
 
+def removeDuplicates(clarifaiList, visionList):
+    outlist = clarifaiList[:]
+    for item in visionList:
+        if item not in clarifaiList:
+            outlist.append(item)
+    return outlist
 
 def upload_file(req):
     target = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'files')
