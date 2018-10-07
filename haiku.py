@@ -116,7 +116,7 @@ def adj_lst_to_dict(adj_lst):
     adj_dict = {}
     a = adj_lst[0]
     b = adj_lst[1]
-    for i in range(0, len(adj_lst)):
+    for i in range(0, len(adj_lst)-1):
         adj_dict.update({a[i]: b[i]})
 
     return adj_dict
@@ -124,7 +124,7 @@ def adj_lst_to_dict(adj_lst):
 
 def noun_lst_to_dict(noun_lst):  # , noun_lst, verb_lst):
     noun_dict = {}
-    for i in range(0, len(noun_lst)):
+    for i in range(0, len(noun_lst) - 1):
         noun_dict.update({noun_lst[0][i]: noun_lst[1][i]})
 
     return noun_dict
@@ -132,7 +132,7 @@ def noun_lst_to_dict(noun_lst):  # , noun_lst, verb_lst):
 
 def verb_lst_to_dict(verb_lst):  # , noun_lst, verb_lst):
     verb_dict = {}
-    for i in range(len(verb_lst)):
+    for i in range(len(verb_lst) - 1):
         verb_dict.update({verb_lst[0][i]: verb_lst[1][i]})
 
     return verb_dict
