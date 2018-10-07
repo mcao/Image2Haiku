@@ -26,6 +26,19 @@ def get_weather(location):
     return res
 
 
-def get_city(longitude, latitude):
+def get_city(latitude, longitude):
     # get the city using longitude and latitude here
-    return 'University Park'
+    
+    loc_url = BASE_URL + "locations/v1/cities/geoposition/search?apikey=" + API_KEY + "&q="
+    loc_url = loc_url + str(latitude) + "%2C" + str(longitude)
+    
+    print(loc_url)
+    
+    req = requests.get(url=loc_url);
+    
+    data = req.json()
+    
+    if data is None:
+        return "FUCK YOURSELF"
+    else:
+        return data["LocalizedName"]
