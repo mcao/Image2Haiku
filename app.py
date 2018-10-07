@@ -40,7 +40,7 @@ def upload():
         weather_data = weather.black_magic(weather_raw, emotion_data[0])
     else:
         weather_data = weather.black_magic({"WeatherIcon": -1,
-                                            "Temp": "20.0F",
+                                            "Temp": "20.0C",
                                             "IsDaylight": True}, emotion_data[0])
     print(phrases, colors, emotion_data, weather_data)
     return haiku_generator.generate_haiku(phrases, colors, emotion_data, weather_data)
