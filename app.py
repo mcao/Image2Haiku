@@ -29,8 +29,7 @@ def upload():
     phrases = removeDuplicates(concepts, objects)
 
     if lat is not None and lon is not None:
-        city = weather.get_city(lat, lon)
-        weather_raw = weather.get_weather(city)
+        weather_raw = weather.get_weather(weather.get_city(lat, lon))
         weather_data = weather.black_magic(weather_raw, emotion_data[0])
     else:
         weather_data = 0
