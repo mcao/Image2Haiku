@@ -13,7 +13,7 @@ def cloud_vision(imageURI='https://cloud.google.com/vision/docs/images/faulkner.
 
 
 def response(resp):
-    vision_response = json.loads(resp)
+    vision_response = json.loads(resp.decode('utf-8'))
 
     # emotions
     try:
