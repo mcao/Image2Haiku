@@ -89,14 +89,14 @@ def adj_lst_to_dict(adj_lst):
 def noun_lst_to_dict(noun_lst):  # , noun_lst, verb_lst):
     noun_dict = {}
     i = 0
-    for i in range(len(noun_lst)):
+    for i in range(len(noun_lst)+1):
         noun_dict[noun_lst[0][i]] = noun_lst[1][i]
 
     return noun_dict
 
 
 def verb_lst_to_dict(verb_lst):  # , noun_lst, verb_lst):
-    verb_dict = {}
+    verb_dict = {"running": 2, "walking": 2}
     i = 0
     for i in range(len(verb_lst)+1):
         verb_dict[verb_lst[0][i]] = verb_lst[1][i]
