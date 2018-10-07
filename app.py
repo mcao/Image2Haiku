@@ -1,7 +1,7 @@
 import os
 import image_data
 import clarifai_data
-import test_generator
+import super_generator
 import haiku
 import weather
 import image_request
@@ -45,8 +45,8 @@ def upload():
     print(phrases, emotion_data, weather_data)
     # print(test_generator.generate_haiku(phrases, emotion_data, weather_data))
     # return test_generator.generate_haiku(phrases, emotion_data, weather_data)
-    print(haiku.main_shit(phrases, weather_data))
-    return haiku.main_shit(phrases, weather_data)
+    print(super_generator.main_shit(phrases, weather_data))
+    return super_generator.main_shit(phrases, weather_data)
 
 
 @app.route('/files/<path:path>')
