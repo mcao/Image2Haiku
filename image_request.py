@@ -22,7 +22,7 @@ def response(resp):
         anger = vision_response["responses"][0]["faceAnnotations"][0]["angerLikelihood"]
         surprise = vision_response["responses"][0]["faceAnnotations"][0]["surpriseLikelihood"]
         emotions = [joy, sorrow, anger, surprise]
-    except:
+    except TypeError:
         emotions = []
 
     # labels

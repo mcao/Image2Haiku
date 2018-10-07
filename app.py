@@ -16,8 +16,12 @@ def index():
 @app.route('/upload', methods=["POST"])
 def upload():
     file_data = upload_file(request)
-
-    lat, lon = image_data.get_lat_lon(image_data.get_exif_data(file_data[0]))
+    ext = os.path.splitext(upload.filename)[1]
+    if ext is 'jpg':
+        lat, lon = image_data.get_lat_lon(
+            image_data.get_exif_data(file_data[0]))
+    else:
+        lat, lon = None
     url = file_data[1]
 
     try:
@@ -35,7 +39,9 @@ def upload():
         weather_raw = weather.get_weather(weather.get_city(lat, lon))
         weather_data = weather.black_magic(weather_raw, emotion_data[0])
     else:
-        weather_data = 0
+        weather_data = weather.black_magic({"WeatherIcon": -1,
+                                            "Temp": "20.0F",
+                                            "IsDaylight": True}, emotion_data[0])
     print(phrases, colors, emotion_data, weather_data)
     return haiku_generator.generate_haiku(phrases, colors, emotion_data, weather_data)
 
