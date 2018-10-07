@@ -46,7 +46,9 @@ def upload():
     # print(test_generator.generate_haiku(phrases, emotion_data, weather_data))
     # return test_generator.generate_haiku(phrases, emotion_data, weather_data)
     # print(super_generator.main_shit(phrases, weather_data))
-    return super_generator.main_shit(phrases, weather_data)
+    first_line, second_line, third_line = super_generator.main_shit(
+        phrases, weather_data)
+    return first_line + "<br>" + second_line + "<br>" + third_line
 
 
 @app.route('/files/<path:path>')

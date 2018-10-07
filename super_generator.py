@@ -266,14 +266,12 @@ def main_shit(word_list, final_senti):
     third_line_senti = calculate_sentiment_of_phrase(third_line_list)
 
     print(first_line_senti)
-    print("START")
     small = 0
     small = final_senti - first_line_senti[0]
     i = 1
     for i in range(5):
         if(final_senti - first_line_senti[i] <= small):
             small = final_senti - first_line_senti[i]
-    print("CHECKPOINT 1")
     i = 0
     for i in range(5):
         if(small == final_senti - first_line_senti[i]):
@@ -284,7 +282,6 @@ def main_shit(word_list, final_senti):
     for j in range(5):
         if(final_senti - second_line_senti[j] <= small):
             small = final_senti - second_line_senti[i]
-    print("CHECKPOINT 2")
     j = 0
     for j in range(5):
         if(small == final_senti - second_line_senti[j]):
@@ -295,12 +292,10 @@ def main_shit(word_list, final_senti):
     for k in range(5):
         if(final_senti - third_line_senti[k] <= small):
             small = final_senti - third_line_senti[i]
-    print("CHECKPOINT 3")
     k = 0
     for k in range(5):
         if(small == final_senti - third_line_senti[k]):
             break
-    print("END")
 
     first_line = first_line_list[i]  # change
     second_line = second_line_list[j]
