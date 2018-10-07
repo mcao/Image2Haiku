@@ -17,7 +17,7 @@ def find_adjectives(dicti):
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     adj = []
-    for token, whatever in nouns_n_shit:
+    for token in nouns_n_shit:
         if (token.part_of_speech.tag == 'ADJ'):
             adj.append(token.text.content)
 
@@ -32,7 +32,7 @@ def find_nouns(dicti):
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     noun = []
-    for token, whatever in nouns_n_shit:
+    for token in nouns_n_shit:
         if (token.part_of_speech.tag == 'NOUN'):
             noun.append(token.text.content)
 
@@ -48,7 +48,7 @@ def find_verbs(dicti):
     pos_tag = ('UNKNOWN', 'ADJ', 'ADP', 'ADV', 'CONJ', 'DET', 'NOUN', 'NUM',
                'PRON', 'PRT', 'PUNCT', 'VERB', 'X', 'AFFIX')
     verb = []
-    for token, whatever in nouns_n_shit:
+    for token in nouns_n_shit:
         if (token.part_of_speech.tag == 'VERB'):
             verb.append(token.text.content)
 
