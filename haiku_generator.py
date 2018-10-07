@@ -135,7 +135,7 @@ def first_line_generator(adj_dict, noun_dict, verb_dict):
             sorted_by_value = sorted(
                 possible_firsts.items(), key=lambda kv: kv[1], reverse=True)
             for key, value in sorted_by_value:
-                if (sorted_by_value[1]) > 5:
+                if (key[1]) > 5:
                     continue
                 else:
                     first_line = key
@@ -170,7 +170,7 @@ def sec_line_generator(adj_dict, noun_dict, verb_dict):
             sorted_by_value = sorted(
                 possible_seconds.items(), key=lambda kv: kv[1], reverse=True)
             for key, value in sorted_by_value:
-                if (sorted_by_value[1]) > 7:
+                if (key[1]) > 7:
                     continue
                 else:
                     second_line = key
@@ -205,7 +205,7 @@ def third_line_generator(adj_dict, noun_dict, verb_dict):
             sorted_by_value = sorted(
                 possible_thirds.items(), key=lambda kv: kv[1], reverse=True)
             for key, value in sorted_by_value:
-                if (sorted_by_value[1]) > 5:
+                if (key[1]) > 5:
                     continue
                 else:
                     third_line = key
