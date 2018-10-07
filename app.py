@@ -27,9 +27,8 @@ def upload():
 
     try:
         concepts = clarifai_data.get_concepts(url)
-        colors = clarifai_data.get_colors(url)
     except:
-        return "Kill Yourself"
+        return "The Clarifai API returned an unconventional response. Please hit back and try again!"
 
     emotions, objects = image_request.response(image_request.cloud_vision(url))
     emotion_data = image_request.black_magic(emotions)
@@ -42,8 +41,8 @@ def upload():
     else:
         weather_raw = weather.get_weather("State College")
         weather_data = weather.black_magic(weather_raw, emotion_data[0])
-    print(phrases, colors, emotion_data, weather_data)
-    return test_generator.generate_haiku(phrases, colors, emotion_data, weather_data)
+    print(phrases, emotion_data, weather_data)
+    return test_generator.generate_haiku(phrases, emotion_data, weather_data)
 
 
 @app.route('/files/<path:path>')
