@@ -4,7 +4,7 @@ import urllib3
 
 
 def cloud_vision(imageURI='https://cloud.google.com/vision/docs/images/faulkner.jpg'):
-	print("Querying cloud vision with URI " + imageURI)
+    print("Querying cloud vision with URI " + imageURI)
     http = urllib3.PoolManager()
     hardcode = "{'requests':[{'features':[{'type':'FACE_DETECTION','max_results':3},{'type':'LANDMARK_DETECTION','maxResults':3},{'type':'LOGO_DETECTION','maxResults':3},{'type':'LABEL_DETECTION','maxResults':3},{'type':'TEXT_DETECTION','maxResults':3},{'type':'IMAGE_PROPERTIES','maxResults': 3},{'type':'WEB_DETECTION','maxResults':3},{'type':'OBJECT_LOCALIZATION','maxResults':3}],'image':{'source':{'imageUri':'"+imageURI+"'}},'imageContext':{'webDetectionParams':{'includeGeoResults':true}}}]}"
     res = http.request('POST', 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDA0iAWg1ZZsaxdC1xVHxrFeFR6qEMuiKc',
