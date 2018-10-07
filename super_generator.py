@@ -98,7 +98,7 @@ def noun_lst_to_dict(noun_lst):  # , noun_lst, verb_lst):
 def verb_lst_to_dict(verb_lst):  # , noun_lst, verb_lst):
     verb_dict = {"running": 2, "walking": 2}
     i = 0
-    for i in range(len(verb_lst)+1):
+    for i in range(len(verb_lst[0])+1):
         verb_dict[verb_lst[0][i]] = verb_lst[1][i]
 
     return verb_dict
