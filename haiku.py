@@ -270,6 +270,9 @@ def main_shit(word_list, final_senti):
     noun_dict = noun_lst_to_dict(noun_to_noun_lst(noun))
     verb_dict = verb_lst_to_dict(verb_to_verb_lst(verb))
 
+    print(first_line_generator(
+        adj_dict, noun_dict, verb_dict))
+
     first_line_list = []
     second_line_list = []
     third_line_list = []
