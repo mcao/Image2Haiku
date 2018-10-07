@@ -48,7 +48,7 @@ def removeDuplicates(list1, list2):
     inlist = list1 + list2
     for item in inlist:
         if item not in outlist:
-            outlist.append(item)
+            outlist.append(item.lower())
     return outlist
 
 
