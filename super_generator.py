@@ -125,7 +125,7 @@ def first_line_generator(adj_dict, noun_dict, verb_dict):
                     first_line = key
                     return first_line[0]
 
-        adj,  adj_syllables = random.choice(list(adj_dict.items()))
+        adj, adj_syllables = random.choice(list(adj_dict.items()))
         noun, noun_syllables = random.choice(list(noun_dict.items()))
         verb, verb_syllables = random.choice(list(verb_dict.items()))
 
