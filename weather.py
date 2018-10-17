@@ -1,7 +1,7 @@
 import requests
 import random
 
-API_KEY = "HackPSU2018"
+API_KEY = "GUFKUOYdA7ilIPX6vd1fbVq2VEQunxjL"
 BASE_URL = "http://dataservice.accuweather.com/"
 
 
