@@ -30,9 +30,8 @@ def upload():
     except:
         return "The Clarifai API returned an unconventional response. Please hit back and try again!"
 
-    emotions, objects = image_request.response(image_request.cloud_vision())
-    emotions = 1
-    emotion_data = image_request.black_magic(get_weather("State College"),emotions)
+    emotions, objects = image_request.response(image_request.cloud_vision(url))
+    emotion_data = image_request.black_magic(emotions)
 
     phrases = removeDuplicates(concepts, objects)
 
