@@ -1,10 +1,20 @@
 import requests
 import random
 
+###############################################
+#Name of File: weather.py
+#Purpose of File: weather.py uses the accuweather api to find locations, weather for the location, and the mood there
+#API’s: Accuweather
+###############################################
+
 API_KEY = "GUFKUOYdA7ilIPX6vd1fbVq2VEQunxjL"
 BASE_URL = "http://dataservice.accuweather.com/"
 
-
+####################################
+#Precondition: City as a string
+#Postcondition: Length 3 Dictionary of the Temperature, weather icon, and isdaylight
+#Summary: This retrieves the weather data from accuweather from a certain city
+####################################
 def get_weather(location):
     location_url = BASE_URL + "locations/v1/search?q=" + \
         location.replace(' ', '%20') + "&apikey=" + API_KEY
@@ -29,6 +39,12 @@ def get_weather(location):
     return res
 
 
+####################################
+#Precondition: Weather in the form of a 3 length dictionary Temperature, weather icon, and isdaylight. ALSO, takes an integer -1->1 representative of the emotion of the picture
+#Postcondition: Returns an integer -1->1
+#Summary: This takes weather data from get_weather and the emotion of the picture and creates the threshhold.
+#This variable is on a scale of -1->1. -1 being very sad, 1 being very happy
+####################################
 def black_magic(res, emo):
     weather = res["WeatherIcon"]
     temp = res["Temp"]
@@ -98,6 +114,11 @@ def black_magic(res, emo):
     return total
 
 
+####################################
+#Precondition: Latitude and lonigitude in float or integer
+#Postcondition: Returns the closest city
+#Summary: This retrieves the closest city to the latitude and longitude. There are limitations to the distance from origin, if there is nothing it returns State College
+####################################
 def get_city(latitude, longitude):
     # get the city using longitude and latitude here
 
