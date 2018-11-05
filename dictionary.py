@@ -35,17 +35,17 @@ def get_phrase(word):
 #Summary: Sends words to Oxford and gets 4 synonyms for each word
 ###############################################
 def get_syn(word):
-    if (len(word) == 0):
-        return "none";
+    if len(word) == 0:
+        return "none"
     #returns if nothing is given
-    
-    if (len(word[0]) == 1)):
+
+    if len(word[0]) == 1:
         #this is just one word as a string
         length = 1
     else:
         #This is more than one word, or it could be one word in a list
         length = len(word)
-    
+
 
     synonyms = []
     for x in range(0, length):
