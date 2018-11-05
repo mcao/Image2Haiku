@@ -1,9 +1,19 @@
+###############################################
+#Name of File: clarifai_data.py
+#Purpose of File: Use the Clarifai AI to get concepts (objects) and colors
+#API’s: clarifai
+###############################################
+
 from clarifai.rest import ClarifaiApp
 
 API_KEY = "368e6551d02a46b495f9724f7d7d2683"
 APP = ClarifaiApp(api_key=API_KEY)
 
-
+###############################################
+#Precondition: Image url as a string (optional: minimum threshold, maximum number of concepts)
+#Postcondition: List of concepts
+#Summary: Uses the clarifai API to find concepts in an image
+###############################################
 def get_concepts(imgurl, threshold=0.8, max_concepts=100):
     assert isinstance(imgurl, str), "Invalid image input"
 
@@ -15,6 +25,11 @@ def get_concepts(imgurl, threshold=0.8, max_concepts=100):
     # Get data out of prediction
     return [concept["name"] for concept in prediction["outputs"][0]["data"]["concepts"]]
 
+###############################################
+#Precondition: Image url as a string (optional: minimum threshold)
+#Postcondition: List of colors
+#Summary: Uses the clarifai API to find colors in an image
+###############################################
 def get_colors(imgurl, threshold=0.1):
     assert isinstance(imgurl, str), "Invalid image input"
 
