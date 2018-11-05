@@ -13,24 +13,21 @@ def get_concepts(imgurl, threshold=0.8, max_concepts=100):
                                       max_concepts=max_concepts, min_value=threshold)
 
     # Get data out of prediction
-    concepts = prediction["outputs"][0]["data"]["concepts"]
-    return [concept["name"] for concept in concepts]
+    return [concept["name"] for concept in prediction["outputs"][0]["data"]["concepts"]]
 
 def get_colors(imgurl, threshold=0.1):
     assert isinstance(imgurl, str), "Invalid image input"
+
+    # List of possible outputs
+    outputs = ["white", "grey", "gray", "black", "red",
+               "orange", "yellow", "green", "blue", "purple", "violet"]
 
     # Set up clarifai api
     model = APP.models.get('color')
     prediction = model.predict_by_url(url=imgurl)
 
-    # Get data out of prediction
+    # Get data out of prediction (Get list of data -> Get names if threshold met -> Get list of colors found in outputs -> Remove duplicates)
     color_data = prediction["outputs"][0]["data"]["colors"]
     colors = [color["w3c"]["name"].lower() for color in color_data if color["value"] >= threshold]
-    color_names = ["white", "grey", "gray", "black", "red",
-                   "orange", "yellow", "green", "blue", "purple", "violet"]
-    valid_colors = []
-    for color in colors:
-        for c in color_names:
-            if c in color and c not in valid_colors:
-                valid_colors.append(c)
-    return valid_colors
+    valid_colors = [c for c in outputs for color in colors if c in color]
+    return list(set(valid_colors))
